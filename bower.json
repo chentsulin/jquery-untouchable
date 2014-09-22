@@ -1,0 +1,17 @@
+{
+  "name": "jquery-untouchable",
+  "version": "0.0.1",
+  "homepage": "https://github.com/ChenTsuLin/jquery-untouchable",
+  "authors": [
+    "Leo Chen-Tsu_Lin <lin19890808@gmail.com>"
+  ],
+  "description": "untouchable",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
