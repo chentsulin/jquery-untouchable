@@ -21,21 +21,34 @@
 
   Untouchable.DEFAULTS = {
     distance: 100,
-    speed: 400
+    duration: 400
   };
 
-  Untouchable.prototype.calculateDistance(elem, mouseX, mouseY) {
-    return Math.floor(Math.sqrt(Math.pow(mouseX - (elem.offset().left + (elem.width() / 2)), 2) + Math.pow(mouseY - (elem.offset().top + (elem.height() / 2)), 2)));
-  }
+  Untouchable.prototype.getXvactor(elem, mouseX) {
+    return mouseX - (elem.offset().left + (elem.width() / 2));
+  };
+
+  Untouchable.prototype.getYvactor(elem, mouseY) {
+    return mouseY - (elem.offset().top + (elem.height() / 2));
+  };
+
+  Untouchable.prototype.getDistance(elem, mouseX, mouseY) {
+    return Math.sqrt(Math.pow(this.getXvactor(elem, mouseX), 2) + Math.pow(this.getYvactor(elem, mouseY), 2));
+  };
 
   Untouchable.prototype.away = function(e) {
     var mouseX = e.pageX;
     var mouseY = e.pageY;
 
-    var distance = this.calculateDistance($(this), mouseX, mouseY);
+    var distance = this.getDistance($(this), mouseX, mouseY);
 
     if (distance < this.options.distance) {
+
       // away
+      this.$element.animate({
+        top : '-=' + this.getXvactor(),
+        left: '-=' + this.getYvactor()
+      }, $this.options.duration, $this.options.easing, $this.options.onAway);
     }
   };
 
