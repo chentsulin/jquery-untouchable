@@ -24,15 +24,15 @@
     duration: 400
   };
 
-  Untouchable.prototype.getXvactor(elem, mouseX) {
+  Untouchable.prototype.getXvactor = function(elem, mouseX) {
     return mouseX - (elem.offset().left + (elem.width() / 2));
   };
 
-  Untouchable.prototype.getYvactor(elem, mouseY) {
+  Untouchable.prototype.getYvactor = function(elem, mouseY) {
     return mouseY - (elem.offset().top + (elem.height() / 2));
   };
 
-  Untouchable.prototype.getDistance(elem, mouseX, mouseY) {
+  Untouchable.prototype.getDistance = function(elem, mouseX, mouseY) {
     return Math.sqrt(Math.pow(this.getXvactor(elem, mouseX), 2) + Math.pow(this.getYvactor(elem, mouseY), 2));
   };
 
