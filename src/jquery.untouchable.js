@@ -13,7 +13,7 @@
     this.options = options;
     this.$element = $(element);
 
-    this.$element.on('mousemove', this.away);
+    this.$element.on('mousemove', this.away.bind(this));
   };
 
   //
@@ -25,6 +25,7 @@
   };
 
   Untouchable.prototype.getXvactor = function(elem, mouseX) {
+    console.log(elem)
     return mouseX - (elem.offset().left + (elem.width() / 2));
   };
 
@@ -40,15 +41,15 @@
     var mouseX = e.pageX;
     var mouseY = e.pageY;
 
-    var distance = this.getDistance($(this), mouseX, mouseY);
+    var distance = this.getDistance(this.$element, mouseX, mouseY);
 
     if (distance < this.options.distance) {
 
       // away
       this.$element.animate({
-        top : '-=' + this.getXvactor(),
-        left: '-=' + this.getYvactor()
-      }, $this.options.duration, $this.options.easing, $this.options.onAway);
+        top : '-=' + this.getXvactor(this.$element, mouseX),
+        left: '-=' + this.getYvactor(this.$element, mouseY)
+      }, this.options.duration, this.options.easing, this.options.onAway);
     }
   };
 
