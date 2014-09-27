@@ -13,7 +13,7 @@
     this.options = options;
     this.$element = $(element);
 
-    this.$element.on('mousemove', this.away.bind(this));
+    $(document).on('mousemove', this.away.bind(this));
   };
 
   //
@@ -38,15 +38,31 @@
   };
 
   Untouchable.prototype.away = function(e) {
+
+    console.log('onAway');
+
     var mouseX = e.pageX;
     var mouseY = e.pageY;
 
+    console.log('mouseX', mouseX);
+    console.log('mouseY', mouseY);
+
     var distance = this.getDistance(this.$element, mouseX, mouseY);
+    console.log('d', distance)
 
     if (distance < this.options.distance) {
 
+      var x = this.getXvactor(this.$element, mouseX);
+      var y = this.getYvactor(this.$element, mouseY);
+
+      console.log('x', x);
+      console.log('y', y);
+
+      var topMove  = ( x > 0 ? '-=' : '+=') + this.getXvactor(this.$element, mouseX) / 10;
+      var leftMove = ( y > 0 ? '-=' : '+=') + this.getYvactor(this.$element, mouseY) / 10;
+
       // away
-      this.$element.animate({
+      this.$element.stop().animate({
         top : '-=' + this.getXvactor(this.$element, mouseX),
         left: '-=' + this.getYvactor(this.$element, mouseY)
       }, this.options.duration, this.options.easing, this.options.onAway);
