@@ -60,6 +60,7 @@
   $.fn.untouchable = function(option) {
     return this.each(function() {
       var $this   = $(this);
+      var data    = $this.data('untouchable');
       var options = $.extend({}, Untouchable.DEFAULTS, $this.data(), typeof option == 'object' && options);
 
       if (!data) $this.data('untouchable', (data = new Untouchable(this, options)));
@@ -74,8 +75,7 @@
   $.fn.untouchable.noConflict = function () {
     $.fn.untouchable = old;
     return this;
-  }
-
+  };
 
 
 }(jQuery))
