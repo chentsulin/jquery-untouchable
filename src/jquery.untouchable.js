@@ -58,8 +58,8 @@
       console.log('x', x);
       console.log('y', y);
 
-      var topMove  = ( x > 0 ? '-=' : '+=') + this.getXvactor(this.$element, mouseX) / 10;
-      var leftMove = ( y > 0 ? '-=' : '+=') + this.getYvactor(this.$element, mouseY) / 10;
+      var topMove  = ( x > 0 ? '-=' : '+=') + Math.abs(this.getXvactor(this.$element, mouseX) / 10);
+      var leftMove = ( y > 0 ? '-=' : '+=') + Math.abs(this.getYvactor(this.$element, mouseY) / 10);
 
       // away
       this.$element.stop().animate({
