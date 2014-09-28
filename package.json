@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/ChenTsuLin/jquery-untouchable/issues"
   },
-  "homepage": "https://github.com/ChenTsuLin/jquery-untouchable"
+  "homepage": "https://github.com/ChenTsuLin/jquery-untouchable",
+  "devDependencies": {
+    "gulp": "^3.8.8"
+  }
 }
