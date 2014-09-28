@@ -21,7 +21,7 @@
 
   Untouchable.DEFAULTS = {
     distance: 100,
-    duration: 400
+    duration: 100
   };
 
   Untouchable.prototype.getXvactor = function(elem, mouseX) {
@@ -58,13 +58,14 @@
       console.log('x', x);
       console.log('y', y);
 
-      var topMove  = ( x > 0 ? '-=' : '+=') + this.getXvactor(this.$element, mouseX) / 10;
-      var leftMove = ( y > 0 ? '-=' : '+=') + this.getYvactor(this.$element, mouseY) / 10;
+
+      var topMove  = ( y > 0 ? '-=' : '+=') + Math.abs(this.getYvactor(this.$element, mouseY));
+      var leftMove = ( x > 0 ? '-=' : '+=') + Math.abs(this.getXvactor(this.$element, mouseX));
 
       // away
       this.$element.stop().animate({
-        top : '-=' + this.getXvactor(this.$element, mouseX),
-        left: '-=' + this.getYvactor(this.$element, mouseY)
+        top : topMove,
+        left: leftMove
       }, this.options.duration, this.options.easing, this.options.onAway);
     }
   };
