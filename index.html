@@ -6,16 +6,47 @@
     <link type="text/css" rel="stylesheet" href="css/jquery-untouchable.css">
     <style>
         .target {
-            left: 300px;
-            top: 300px;
             width: 100px;
             height: 100px;
             border: 2px solid #333;
         }
+        .target-1 {
+            background-color: #f00;
+            left: 100px;
+            top: 200px;
+        }
+
+        .target-2 {
+            background-color: #0f0;
+            left: 300px;
+            top: 400px;
+        }
+
+        .target-3 {
+            background-color: #00f;
+            left: 800px;
+            top: 200px;
+        }
+
+        .target-4 {
+            background-color: #f0f;
+            left: 600px;
+            top: 300px;
+        }
+
+        .target-5 {
+            background-color: #0ff;
+            left: 200px;
+            top: 500px;
+        }
     </style>
 </head>
 <body>
-    <div class="target untouchable"></div>
+    <div class="untouchable target target-1"></div>
+    <div class="untouchable target target-2"></div>
+    <div class="untouchable target target-3"></div>
+    <div class="untouchable target target-4"></div>
+    <div class="untouchable target target-5"></div>
 
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <script src="src/jquery.untouchable.js"></script>
